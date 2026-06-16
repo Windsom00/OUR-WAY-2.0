@@ -5,9 +5,11 @@
   --paper: #f7f9fb;
   --panel: #ffffff;
   --orange: #ff6b00;
+  --orange-sand: #FAB475;
   --orange-dark: #ad4100;
   --red: #c90009;
   --red-dark: #970007;
+  --red-sand: #FF7A7A;
   --teal: #0997bd;
   --purple: #a72feb;
   --blue: #075d84;
@@ -248,7 +250,24 @@ button {
   text-overflow: ellipsis;
 }
 
+.btn-procedure2 {
+  background: var(--blue-pale);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 7px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .btn-procedure:hover { background: var(--blue-light); }
+.btn-procedure2:hover { background: #2e9dd4; }
 
 /* ── Procedure sub-buttons ── */
 .proc-wrapper {
@@ -267,6 +286,7 @@ button {
   flex-direction: column;
   gap: 2px;
   padding: 4px 0 4px 16px;
+  border-left: 3px solid var(--blue-light);
   margin-left: 6px;
 }
 
@@ -291,6 +311,30 @@ button {
 
 .btn-procedure--doc:hover {
   background: var(--violet-hover);
+}
+
+/* Sub-docs row (PMOP, HSE Plan, etc.) */
+.subdocs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+
+.btn-subdoc {
+  background: #14243a;
+  color: #88b0d0;
+  border: 1px solid #2a4a6a;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: default;
+  letter-spacing: 0.04em;
+}
+
+.btn-subdoc:hover{
+  cursor: pointer;
 }
 
 /* Meeting / governance buttons */
@@ -326,6 +370,14 @@ button {
 }
 
 .btn-meeting:hover { background: var(--violet-hover); }
+/* "Applied when relevant" note */
+.applied-note {
+  font-size: 0.65rem;
+  color: #6888a8;
+  font-style: italic;
+  margin-top: 6px;
+  text-align: right;
+}
 
 /* Divider line in right panel */
 .right-divider {
@@ -453,6 +505,7 @@ button {
   font-weight: 900;
   text-transform: uppercase;
   z-index: 2;
+  margin-bottom: 15px;
 }
 
 .bid-track,
@@ -471,7 +524,10 @@ button {
   left: 28px;
   right: 28px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(130px, 1fr));
+  /* 4 phases + 4 gates (gate after each phase incl. handover transition) */
+  grid-template-columns: 1fr 52px 1fr 52px 1fr 52px 1fr 52px;
+  gap: 0;
+  align-items: stretch;
   z-index: 3;
 }
 
@@ -485,13 +541,127 @@ button {
   z-index: 3;
 }
 
+/* ─── Gate node (clickable, intercalated between phases) ─── */
+.gate-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 14px;
+  gap: 5px;
+  background: var(--orange-sand);
+  border: none;
+  border-left: 2px solid rgba(255,255,255,.45);
+  border-right: 2px solid rgba(255,255,255,.45);
+  color: var(--orange-dark);
+  cursor: pointer;
+  transition: filter .15s, transform .15s;
+  position: relative;
+  min-height: 86px;
+  overflow: visible;
+}
+
+.gate-node2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 14px;
+  gap: 5px;
+  background: var(--red-sand);
+  border: none;
+  border-left: 2px solid rgba(255,255,255,.45);
+  border-right: 2px solid rgba(255,255,255,.45);
+  color: var(--red-dark);
+  cursor: pointer;
+  transition: filter .15s, transform .15s;
+  position: relative;
+  min-height: 86px;
+  overflow: visible;
+}
+
+.gate-node:hover {
+  filter: brightness(.88);
+  transform: translateY(-2px);
+}
+
+.gate-node2:hover {
+  filter: brightness(.88);
+  transform: translateY(-2px);
+}
+
+.gate-node-badge {
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--teal);
+  border: 2px dashed #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  flex-shrink: 0;
+}
+
+.gate-node-badge2 {
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--purple);
+  border: 2px dashed #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  flex-shrink: 0;
+}
+
+.gate-node-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  background: #f4d4a6;
+  color: #111827;
+  font-size: 20px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.gate-node-title {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--orange-dark);
+  line-height: 1.1;
+  flex: 1;
+  text-align: center;
+  padding: 4px 0;
+}
+
 .real-track {
   position: absolute;
   bottom: 60px;
   left: 28px;
   right: 28px;
   display: grid;
-  grid-template-columns: 1.05fr 1.35fr .9fr 1.1fr;
+  /* 4 real phases + 3 gates between them */
+  grid-template-columns: 1fr 52px 1.3fr 52px .9fr 52px 1fr;
+  gap: 0;
+  align-items: stretch;
   z-index: 3;
 }
 
@@ -596,67 +766,6 @@ button {
   border-radius: 0 54px 54px 0;
   z-index: 1;
 }
-/* ─── Gates ─── */
-
-.gate {
-  position: absolute;
-  z-index: 5;
-  width: 74px;
-  min-height: 144px;
-  padding: 8px 6px 10px;
-  border: none;
-  background: #f79595;
-  color: var(--orange-dark);
-  text-align: center;
-  font-weight: 900;
-  box-shadow: 0 8px 22px rgba(17, 24, 39, .18);
-}
-
-.gate::before {
-  content: attr(data-badge);
-  display: grid;
-  place-items: center;
-  width: 58px;
-  height: 58px;
-  margin: -36px auto 8px;
-  border: 5px dashed #fff;
-  border-radius: 50%;
-  color: #fff;
-  background: var(--teal);
-  font-size: 12px;
-  line-height: 1;
-}
-
-.gate .symbol {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  margin: 0 auto 8px;
-  border-radius: 6px;
-  color: #111827;
-  background: #f4d4a6;
-  font-size: 25px;
-  font-weight: 900;
-}
-
-.gate .gate-title {
-  display: block;
-  width: 150px;
-  margin-left: -42px;
-  color: var(--orange-dark);
-  font-size: 18px;
-  line-height: 1.05;
-  text-transform: uppercase;
-}
-
-.gate.g1 { left: 20.9%;  top: 80px; }
-.gate.g2 { left: 47%;  top: 148px; }
-.gate.g3 { right: 26%; top: 148px; }
-.gate.g4 { right: 3%;  top: 148px; }
-.gate.g5 { left: 22%;  bottom: 80px; }
-.gate.g6 { left: 52%;  bottom: 80px; }
-.gate.g7 { left: 68%;  bottom: 80px; }
 
 /* ─── Governance bar ─── */
 
@@ -1993,6 +2102,7 @@ tfoot .real { color: var(--red); }
     grid-template-columns: 1fr;
     gap: 8px;
   }
+
   .handover-loop,
   .real-backing,
   .governance,
