@@ -1,5 +1,18 @@
 const GATE_LINK = "Assets/Promo2029ConventionStage_MahéJEANNEAU (2).pdf";
 
+// ─── Gates (intercalated between phases in the lifecycle view) ────────────────
+const gates = [
+  { id: "gate1", afterPhase: "opportunity", title: "Go / No Go Gate",        symbol: "🚦",    badge: "Internal",    link: GATE_LINK },
+  { id: "gate2", afterPhase: "offer",       title: "Permission to Submit",    symbol: "📋",    badge: "Internal",    link: GATE_LINK },
+  { id: "gate3", afterPhase: "contracting", title: "Contract Review",         symbol: "🤝",    badge: "Internal",    link: GATE_LINK },
+  { id: "gate4", afterPhase: "handover",    title: "Handover Meeting",        symbol: "ℹ️",     badge: "Internal",    link: GATE_LINK, stream: "transition" },
+  { id: "gate5", afterPhase: "initialisation", title: "Kick Off Meetings",   symbol: "🚀", badge: "Internal",    link: GATE_LINK, stream: "real" },
+  { id: "gate7", afterPhase: "execution",   title: "Project Reviews",         symbol: "📊",   badge: "With Client", link: GATE_LINK, stream: "real" },
+  { id: "gate8", afterPhase: "closure",     title: "Closure Meetings",        symbol: "✅",   badge: "With Client", link: GATE_LINK, stream: "real" },
+];
+
+
+
 const meetings = [
   { label: "Internal Kick Off meeting", type: "internal", link: GATE_LINK },
   { label: "Client Kick Off meeting",   type: "client",   link: GATE_LINK },
@@ -17,10 +30,13 @@ const Home_procedures = [
   { name: "Procedure Scope Mgt",               link: GATE_LINK },
   { name: "Procedure Legal & Compliance Mgt",  link: GATE_LINK },
   { name: "Procedure Risks & Opp Mgt",         link: GATE_LINK },
-  { name: "Procedure Quality Mgt",             link: GATE_LINK, keyDoc: { label: "PMQP",     link: GATE_LINK } },
-  { name: "Procedure HSE Mgt",                 link: GATE_LINK, keyDoc: { label: "HSE Plan", link: GATE_LINK } },
-  { name: "Procedure Nuclear Safety Mgt",      link: GATE_LINK, keyDoc: { label: "NS Plan",  link: GATE_LINK } },
-  { name: "Procedure Information Security Mgt",link: GATE_LINK, keyDoc: { label: "IS Plan",  link: GATE_LINK } },
+  { name: "Procedure Quality Mgt",             link: GATE_LINK },
+  { name: "Procedure HSE Mgt",                 link: GATE_LINK },
+  { name: "Procedure Nuclear Safety Mgt",      link: GATE_LINK },
+  { name: "Procedure Information Security Mgt",link: GATE_LINK },
+];
+
+const Home_procedures2 = [
   { name: "Procedure Subcontractors Suppliers Mgt", link: GATE_LINK },
   { name: "Procedure Partners Mgt",            link: GATE_LINK },
   { name: "Procedure Worksharing Mgt",         link: GATE_LINK },
@@ -95,29 +111,18 @@ const phases = [
   {
     id: "gate1",
     stream: "gate",
-    title: "Gate1",
-    kicker: "Management",
-    note: "",
-    color: "gate",
-    data: {
-      strategy:      ["Identify client challenges", "Assess strategic value", "Evaluate win probability and differentiators", "Analyse competitors and positioning"],
-      profitability:  ["Estimate contract value"],
-      scope:         ["Identify main client needs", "Identify key project issue"],
-      contract:      ["Identify main legal considerations"],
-      integration:   [],
-      resource:      ["Identify possible required skills", "Assess resource availability and gap"],
-      schedule:      ["Estimate key milestones"],
-      stakeholders:  ["Identify stakeholders and understand expectations", "Assess influence and priorities"],
-      risks:         ["Identify major risks and opportunities"],
-      quality:       ["Identify similar previous projects, main relevant lessons learned"],
-      innovation:    ["Identify potential innovations"],
-      safety:        ["Assess H&S Tag"],
-      nuclear:       ["Assess nuclear safety Tag"],
-      security:      ["Assess Information security tag", "Identify complex or costly requirements"],
-      suppliers:     ["Think about make-or-buy strategy", "Identify potential subcontractors"],
-      partners:      ["Think about partnering strategy", "Identify potential partners"]
-    }
+    gateOnly: true,
+    title: "No Go / Go",
+    kicker: "Gate",
+    symbol: "GO",
+    badge: "Internal",
+    gateLink: GATE_LINK,
+    data: {}
   },
+  // gate2 inserted after offer phase in renderPhaseTracks
+  // gate3 inserted after contracting phase in renderPhaseTracks
+  // gate4 inserted after handover phase in renderPhaseTracks
+  // gate5/6/7 inserted between real phases in renderPhaseTracks
   {
     id: "offer",
     stream: "bid",
