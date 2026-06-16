@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Life Cycle Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div>
+        <h1 class="page_title">Project Life Cycle</h1>
+        <p class="subtitle">Bibliotheque interactive L1: phases, gates, familles de checklist et complements d'information.</p>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <div class="main">
+        <section class="lifecycle" aria-label="Project Life Cycle">
+          <p class="lane-label bid">Bid Management</p>
+          <div class="bid-track" id="bidTrack"></div>
+
+          <p class="lane-label real">Project Realisation</p>
+          <div class="real-backing" aria-hidden="true"></div>
+          <div class="real-track" id="realTrack"></div>
+
+          
+          <div class="gate g2" data-badge="Internal"><span class="symbol">GO</span><span class="gate-title">Permission to Submit</span></div>
+          <div class="gate g3" data-badge="Internal"><span class="symbol">GO</span><span class="gate-title">Contract Review</span></div>
+          <div class="gate g4" data-badge="Internal"><span class="symbol">I</span><span class="gate-title">Handover Meeting</span></div>
+          <div class="gate g5" data-badge="Internal"><span class="symbol">START</span><span class="gate-title">Kick Off Meetings</span></div>
+          <div class="gate g6" data-badge="Internal"><span class="symbol">KPI</span><span class="gate-title">Project Reviews</span></div>
+          <div class="gate g7" data-badge="With Client"><span class="symbol">END</span><span class="gate-title">Closure Meetings</span></div>
+        </section>
+      </div>
+
+      <aside class="aside">
+        <section class="procedure-panel">
+          <h2>Delivery Procedures</h2>
+          <div class="procedure-list" id="procedureList"></div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    <button class="drawer-backdrop" id="drawerBackdrop" type="button" aria-label="Fermer"></button>
+    <article class="drawer-panel">
+      <header class="drawer-head">
+        <div>
+          <h2 id="drawerTitle"></h2>
+          <p id="drawerMeta"></p>
+        </div>
+        <button class="close" id="closeDrawer" type="button" aria-label="Fermer">x</button>
+      </header>
+      <div class="drawer-body" id="drawerBody"></div>
+    </article>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delivery Structure Overview</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="page-header">
+  <h1>Delivery Structure Overview</h1>
+  <span class="sub">Core-Process <strong>Delivery</strong></span>
+</header>
+
+<div class="layout">
+
+  <!-- ═══════════════ LEFT ═══════════════ -->
+  <div class="left-panel">
+
+    <div class="classification-banner">Classification Tool</div>
+
+    <p class="section-title">Project Life Cycle &amp; Frameworks</p>
+
+    <div class="plc-section">
+
+      <!-- Level 1 -->
+      <div class="plc-row">
+        <button class="btn-plc" onclick="window.open('Life_cycle.html', '_blank')">
+          Project Life Cycle
+          <span class="btn-label">L1</span>
+        </button>
+        <span class="row-arrow">↓</span>
+        <button class="btn-framework" onclick="window.open('matrix.html?phase=opportunity', '_blank')">
+          Framework L1
+          <span class="btn-label">Checklist interactive L1</span>
+        </button>
+      </div>
+
+      <!-- Level 2 -->
+      <div class="plc-row">
+        <button class="btn-plc" onclick="window.open('Life_cycle.html', '_blank')">
+          Project Life Cycle
+          <span class="btn-label">L2</span>
+        </button>
+        <span class="row-arrow">↓</span>
+        <button class="btn-framework" onclick="window.open('matrix.html?phase=opportunity', '_blank')">
+          Framework L2
+          <span class="btn-label">Checklist interactive L2</span>
+        </button>
+      </div>
+
+      <!-- Level 3 -->
+      <div class="plc-row">
+        <button class="btn-plc" onclick="window.open('Life_cycle.html', '_blank')">
+          Project Life Cycle
+          <span class="btn-label">L3</span>
+        </button>
+        <span class="row-arrow">↓</span>
+        <button class="btn-framework" onclick="window.open('matrix.html?phase=opportunity', '_blank')">
+          Framework L3
+          <span class="btn-label">Checklist interactive L3</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Governance meetings -->
+    <div class="meetings-section">
+      <div class="meetings-levels" id="meetingLevels"></div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════ RIGHT ═══════════════ -->
+  <div class="right-panel">
+
+    <!-- Procedures -->
+    <div>
+      <p class="right-section-title">Delivery Procedures</p>
+      <div class="procedures-grid" id="procedureButtons"></div>
+    </div>
+
+    <hr class="right-divider">
+
+    <!-- Sub-docs -->
+    <div>
+      <p class="right-section-title">Key Documents</p>
+      <div class="subdocs-row">
+        <button class="btn-subdoc" type="button" onclick="window.open('Assets/Promo2029ConventionStage_MahéJEANNEAU (2).pdf', '_blank')">PMQP</button>
+        <button class="btn-subdoc" type="button" onclick="window.open('Assets/Promo2029ConventionStage_MahéJEANNEAU (2).pdf')">HSE Plan</button>
+        <button class="btn-subdoc" type="button" onclick="window.open('Assets/Promo2029ConventionStage_MahéJEANNEAU (2).pdf')">NS Plan</button>
+        <button class="btn-subdoc" type="button" onclick="window.open('Assets/Promo2029ConventionStage_MahéJEANNEAU (2).pdf', '_blank')">IS Plan</button>
+      </div>
+      <p class="applied-note">Applied when relevant — linked to Tag S.N.C</p>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="home.js"></script>
+</body>
+</html>
