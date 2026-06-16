@@ -293,30 +293,6 @@ button {
   background: var(--violet-hover);
 }
 
-/* Sub-docs row (PMOP, HSE Plan, etc.) */
-.subdocs-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-bottom: 4px;
-}
-
-.btn-subdoc {
-  background: #14243a;
-  color: #88b0d0;
-  border: 1px solid #2a4a6a;
-  border-radius: 4px;
-  padding: 4px 10px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  cursor: default;
-  letter-spacing: 0.04em;
-}
-
-.btn-subdoc:hover{
-  cursor: pointer;
-}
-
 /* Meeting / governance buttons */
 .meetings-section {
   flex: 1;
@@ -350,14 +326,6 @@ button {
 }
 
 .btn-meeting:hover { background: var(--violet-hover); }
-/* "Applied when relevant" note */
-.applied-note {
-  font-size: 0.65rem;
-  color: #6888a8;
-  font-style: italic;
-  margin-top: 6px;
-  text-align: right;
-}
 
 /* Divider line in right panel */
 .right-divider {
