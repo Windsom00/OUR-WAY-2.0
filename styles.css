@@ -249,6 +249,50 @@ button {
 }
 
 .btn-procedure:hover { background: var(--blue-light); }
+
+/* ── Procedure sub-buttons ── */
+.proc-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-procedure.is-expanded {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: var(--blue-light);
+}
+
+.proc-sub-group {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 0 4px 16px;
+  margin-left: 6px;
+}
+
+.proc-sub-group.open {
+  display: flex;
+}
+
+.btn-procedure--child {
+  border-radius: 4px;
+  font-size: 0.77rem;
+}
+
+.btn-procedure--child::before {
+  content: "└ ";
+  opacity: 0.45;
+  font-size: 0.72rem;
+}
+
+.btn-procedure--doc {
+  background: var(--violet);
+}
+
+.btn-procedure--doc:hover {
+  background: var(--violet-hover);
+}
+
 /* Sub-docs row (PMOP, HSE Plan, etc.) */
 .subdocs-row {
   display: flex;
