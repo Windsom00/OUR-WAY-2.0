@@ -157,14 +157,14 @@ function renderGovernanceEvent(gate, className = "") {
   `;
   }).join("");
 
-  const symbols = (gate.symbols || [gate.symbol]).map(symbol => `
-    <span class="gov-event-symbol gov-symbol-${symbol}"></span>
+  const icons = (gate.icons || (gate.icon ? [gate.icon] : [])).map(icon => `
+    <span class="gov-event-icon">${icon}</span>
   `).join("");
 
   return `
     <button class="gov-event ${className}" type="button" onclick="window.open('${gate.link}', '_blank')">
       <span class="gov-event-badges">${badges}</span>
-      <span class="gov-event-pillar">${symbols}</span>
+      <span class="gov-event-pillar">${icons}</span>
       <span class="gov-event-title">${gate.label}</span>
     </button>
   `;
@@ -196,17 +196,17 @@ function renderGovernanceStrip() {
 
   const gateLink = typeof GATE_LINK !== "undefined" ? GATE_LINK : "Assets/Promo2029ConventionStage_MahÃ©JEANNEAU (2).pdf";
   const gates = isBid ? [
-    { label: "Gate 1<br>Go No Go", symbol: "traffic", afterPhaseIndex: 0, link: gateLink },
-    { label: "Gate 2<br>Bid No Bid", symbol: "document", afterPhaseIndex: 1, link: gateLink },
-    { label: "Gate 3<br>Contract<br>Review", symbol: "handshake", afterPhaseIndex: 2, link: gateLink },
-    { label: "Handover<br>Meeting", symbol: "info", afterPhaseIndex: 3, link: gateLink },
+    { label: "Gate 1<br>Go No Go",       icon: "🚦", afterPhaseIndex: 0, link: gateLink },
+    { label: "Gate 2<br>Bid No Bid",     icon: "📋", afterPhaseIndex: 1, link: gateLink },
+    { label: "Gate 3<br>Contract<br>Review", icon: "🤝", afterPhaseIndex: 2, link: gateLink },
+    { label: "Handover<br>Meeting",      icon: "ℹ️",  afterPhaseIndex: 3, link: gateLink },
   ] : [
-    { label: "Kick Off<br>Meetings", symbols: ["start", "start"], badges: ["Internal", "With<br>Client"], afterPhaseIndex: 0, link: gateLink },
-    { label: "Project<br>Reviews", symbol: "review", badge: "Internal", reviewIndex: 0, link: gateLink },
-    { label: "Project<br>Reviews", symbol: "review", badge: "With<br>Client", reviewIndex: 1, link: gateLink },
-    { label: "Project<br>Reviews", symbol: "review", badge: "Internal", reviewIndex: 2, link: gateLink },
-    { label: "Steering<br>Com.", symbol: "steering", badge: "With<br>Client", reviewIndex: 3, link: gateLink },
-    { label: "Closure<br>Meetings", symbols: ["document", "target"], badges: ["Internal", "With<br>Client"], afterPhaseIndex: 2, link: gateLink },
+    { label: "Kick Off<br>Meetings", icons: ["🚀", "🚀"], badges: ["Internal", "With<br>Client"], afterPhaseIndex: 0, link: gateLink },
+    { label: "Project<br>Reviews",   icon: "📊", badge: "Internal",    reviewIndex: 0, link: gateLink },
+    { label: "Project<br>Reviews",   icon: "📊", badge: "With<br>Client", reviewIndex: 1, link: gateLink },
+    { label: "Project<br>Reviews",   icon: "📊", badge: "Internal",    reviewIndex: 2, link: gateLink },
+    { label: "Steering<br>Com.",     icon: "🧭", badge: "With<br>Client", reviewIndex: 3, link: gateLink },
+    { label: "Closure<br>Meetings",  icons: ["✅", "🎯"], badges: ["Internal", "With<br>Client"], afterPhaseIndex: 2, link: gateLink },
   ];
   const reviewGates = gates.filter(gate => gate.reviewIndex !== undefined);
   const hasBoundaryGateAfter = index =>
