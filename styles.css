@@ -234,6 +234,22 @@ button {
   margin-bottom: 16px;
 }
 
+.large-btn-procedure {
+  background: var(--blue-mid);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 7px 12px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .btn-procedure {
   background: var(--blue-mid);
   color: var(--white);
@@ -241,6 +257,22 @@ button {
   border-radius: 5px;
   padding: 7px 12px;
   font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.large-btn-procedure2 {
+  background: var(--blue-mid);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 7px 12px;
+  font-size: 0.6rem;
   font-weight: 600;
   cursor: pointer;
   text-align: left;
@@ -268,6 +300,9 @@ button {
 
 .btn-procedure:hover { background: var(--blue-light); }
 .btn-procedure2:hover { background: #2e9dd4; }
+.large-btn-procedure:hover { background: var(--blue-light); }
+.large-btn-procedure2:hover { background: #2e9dd4; }
+
 
 /* ── Procedure sub-buttons ── */
 .proc-wrapper {
@@ -303,6 +338,17 @@ button {
   content: "└ ";
   opacity: 0.45;
   font-size: 0.72rem;
+}
+
+.btn-procedure--child2 {
+  border-radius: 4px;
+  font-size: 0.52rem;
+}
+
+.btn-procedure--child2::before {
+  content: "└ ";
+  opacity: 0.45;
+  font-size: 0.47rem;
 }
 
 .btn-procedure--doc {
@@ -659,10 +705,11 @@ button {
   right: 28px;
   display: grid;
   /* 4 real phases + 3 gates between them */
-  grid-template-columns: 1fr 52px 1.3fr 52px .9fr 52px 1fr;
+  grid-template-columns: 1fr 52px 52px 1fr 52px 52px 52px 1fr 52px 52px 1fr;
   gap: 0;
   align-items: stretch;
   z-index: 3;
+  height: 184.242px;
 }
 
 /* ─── Phase nodes ─── */
@@ -699,7 +746,7 @@ button {
 .phase-title {
   display: block;
   font-weight: 900;
-  font-size: clamp(12px, 2.4vw, 20px);
+  font-size: clamp(12px, 2.4vw, 14px);
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0;
@@ -709,7 +756,7 @@ button {
   display: block;
   margin-top: 4px;
   font-weight: 800;
-  font-size: 13px;
+  font-size: clamp(8px, 2.4vw, 12px);
   text-transform: uppercase;
   opacity: .94;
 }
@@ -720,7 +767,7 @@ button {
   max-width: 260px;
   font-style: italic;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.25;
   color: rgba(255, 255, 255, .9);
 }
@@ -861,6 +908,7 @@ button {
   overflow: auto;
   max-height: 800px;
   border-radius: 8px; /* reprend le rayon ici */
+  min-width: 0;
 }
 
 .matrix-footer-wrap {
@@ -885,7 +933,7 @@ button {
 
 .checklist-table {
   width: 100%;
-  min-width: 980px;
+  min-width: 1160px;
   border-collapse: separate;
   border-spacing: 0;
 }
@@ -1466,14 +1514,12 @@ tfoot td {
   transform: translateX(-50%);
 }
 
-.gov-event-symbol {
-  position: relative;
-  z-index: 7;
+.gov-event-icon {
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
-  color: #111827;
+  font-size: 22px;
+  line-height: 1;
+  z-index: 7;
 }
 
 .gov-symbol-traffic {
@@ -2058,7 +2104,7 @@ tfoot .real { color: var(--red); }
 
 /* ─── Responsive ─── */
 
-@media (max-width: 1180px) {
+@media (max-width: 1360px) {
   .workspace {
     grid-template-columns: 1fr;
   }
@@ -2067,7 +2113,7 @@ tfoot .real { color: var(--red); }
   }
 }
 
-@media (max-width: 880px) {
+@media (max-width: 990px) {
   .topbar,
   .aside {
     grid-template-columns: 1fr;
@@ -2083,7 +2129,7 @@ tfoot .real { color: var(--red); }
     width: 100%;
   }
   .lifecycle {
-    min-height: auto;
+    min-height: 2600px;
     padding: 88px 14px 22px;
   }
 
@@ -2109,6 +2155,12 @@ tfoot .real { color: var(--red); }
   .gate {
     display: none;
   }
+  .phase-node {
+    min-height: 100px;
+  }
+  .gate-node2 {
+    min-height: 130px;
+  }
   .category-rail {
     position: static;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -2116,5 +2168,15 @@ tfoot .real { color: var(--red); }
 
   .matrix-current {
     justify-self: start;
+  }
+  .gate-node-title {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 9px;
+    padding: 4px 2px;
+    text-align: center;
+    white-space: normal;       /* autorise le retour à la ligne */
+    overflow: hidden;
+    line-height: 1.1;
   }
 }
