@@ -7,8 +7,12 @@ const gates = [
   { id: "gate3", afterPhase: "contracting", title: "Contract Review",         symbol: "🤝",    badge: "Internal",    link: GATE_LINK },
   { id: "gate4", afterPhase: "handover",    title: "Handover Meeting",        symbol: "ℹ️",     badge: "Internal",    link: GATE_LINK, stream: "transition" },
   { id: "gate5", afterPhase: "initialisation", title: "Kick Off Meetings",   symbol: "🚀", badge: "Internal",    link: GATE_LINK, stream: "real" },
-  { id: "gate7", afterPhase: "execution",   title: "Project Reviews",         symbol: "📊",   badge: "With Client", link: GATE_LINK, stream: "real" },
-  { id: "gate8", afterPhase: "closure",     title: "Closure Meetings",        symbol: "✅",   badge: "With Client", link: GATE_LINK, stream: "real" },
+  { id: "gate6", afterPhase: "initialisation", title: "Kick Off Meetings",   symbol: "🚀", badge: "With Client",    link: GATE_LINK, stream: "real" },
+  { id: "gate7", afterPhase: "execution",   title: "Project Reviews",         symbol: "📊",   badge: "Internal", link: GATE_LINK, stream: "real" },
+  { id: "gate8", afterPhase: "execution", title: "Project Reviews",   symbol: "📊", badge: "With Client",    link: GATE_LINK, stream: "real" },
+  { id: "gate9", afterPhase: "execution", title: "Steering Comitees",   symbol: "🧭", badge: "With Client",    link: GATE_LINK, stream: "real" },
+  { id: "gate10", afterPhase: "closure",     title: "Closure Meetings",        symbol: "✅",   badge: "Internal", link: GATE_LINK, stream: "real" },
+  { id: "gate11", afterPhase: "closure",     title: "Closure Meetings",        symbol: "✅",   badge: "With Client", link: GATE_LINK, stream: "real" },
 ];
 
 
@@ -29,11 +33,15 @@ const Home_procedures = [
   { name: "Procedure Financial Mgt",           link: GATE_LINK },
   { name: "Procedure Scope Mgt",               link: GATE_LINK },
   { name: "Procedure Legal & Compliance Mgt",  link: GATE_LINK },
-  { name: "Procedure Risks & Opp Mgt",         link: GATE_LINK },
-  { name: "Procedure Quality Mgt",             link: GATE_LINK },
-  { name: "Procedure HSE Mgt",                 link: GATE_LINK },
-  { name: "Procedure Nuclear Safety Mgt",      link: GATE_LINK },
-  { name: "Procedure Information Security Mgt",link: GATE_LINK },
+  { name: "Procedure Risks & Opportunities Mgt",         link: GATE_LINK },
+  { name: "Procedure Quality & Continuous Improvement Mgt",             link: GATE_LINK, keyDoc: { label: "PMQP", link: GATE_LINK } },
+  { name: "Procedure HSE Mgt",                 link: GATE_LINK, keyDoc: { label: "HSE Plan", link: GATE_LINK } },
+  { name: "Procedure Nuclear Safety Mgt",      link: GATE_LINK, keyDoc: { label: "NS Plan", link: GATE_LINK } },
+  { name: "Procedure Information Security Mgt",link: GATE_LINK, keyDoc: { label: "IS Plan", link: GATE_LINK } },
+  { name: "Procedure Communication & Stakeholders Mgt",link: GATE_LINK },
+  { name: "Procedure Schedule Mgt",link: GATE_LINK },
+  { name: "Procedure Project Integration Mgt",link: GATE_LINK },
+  { name: "Procedure Ressources Mgt",link: GATE_LINK },
 ];
 
 const Home_procedures2 = [
