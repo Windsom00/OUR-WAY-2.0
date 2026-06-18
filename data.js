@@ -7,12 +7,12 @@ const gates = [
   { id: "gate3", afterPhase: "contracting", title: "Contract Review",         symbol: "🤝",    badge: "Internal",    link: GATE_LINK },
   { id: "gate4", afterPhase: "handover",    title: "Handover Meeting",        symbol: "ℹ️",     badge: "Internal",    link: GATE_LINK, stream: "transition" },
   { id: "gate5", afterPhase: "initialisation", title: "Kick Off Meetings",   symbol: "🚀", badge: "Internal",    link: GATE_LINK, stream: "real" },
-  { id: "gate6", afterPhase: "initialisation", title: "Kick Off Meetings",   symbol: "🚀", badge: "With Client",    link: GATE_LINK, stream: "real" },
+  { id: "gate6", afterPhase: "initialisation", title: "",   symbol: "🚀", badge: "With Client",    link: GATE_LINK, stream: "real" },
   { id: "gate7", afterPhase: "execution",   title: "Project Reviews",         symbol: "📊",   badge: "Internal", link: GATE_LINK, stream: "real" },
-  { id: "gate8", afterPhase: "execution", title: "Project Reviews",   symbol: "📊", badge: "With Client",    link: GATE_LINK, stream: "real" },
+  { id: "gate8", afterPhase: "execution", title: "",   symbol: "📊", badge: "With Client",    link: GATE_LINK, stream: "real" },
   { id: "gate9", afterPhase: "execution", title: "Steering Comitees",   symbol: "🧭", badge: "With Client",    link: GATE_LINK, stream: "real" },
   { id: "gate10", afterPhase: "closure",     title: "Closure Meetings",        symbol: "✅",   badge: "Internal", link: GATE_LINK, stream: "real" },
-  { id: "gate11", afterPhase: "closure",     title: "Closure Meetings",        symbol: "✅",   badge: "With Client", link: GATE_LINK, stream: "real" },
+  { id: "gate11", afterPhase: "closure",     title: "",        symbol: "✅",   badge: "With Client", link: GATE_LINK, stream: "real" },
 ];
 
 
