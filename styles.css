@@ -544,7 +544,7 @@ button {
 
 .lane-label.real {
   position: absolute;
-  bottom: 230px;
+  bottom: 270px;
   left: 24px;
   color: var(--red);
   font-size: clamp(22px, 3vw, 38px);
@@ -575,6 +575,7 @@ button {
   gap: 0;
   align-items: stretch;
   z-index: 3;
+  margin-top: 30px;
 }
 
 .gate-track {
@@ -597,8 +598,7 @@ button {
   gap: 5px;
   background: var(--orange-sand);
   border: none;
-  border-left: 2px solid rgba(255,255,255,.45);
-  border-right: 2px solid rgba(255,255,255,.45);
+  border: 2px solid rgba(255,255,255,.45);
   color: var(--orange-dark);
   cursor: pointer;
   transition: filter .15s, transform .15s;
@@ -616,14 +616,21 @@ button {
   gap: 5px;
   background: var(--red-sand);
   border: none;
-  border-left: 2px solid rgba(255,255,255,.45);
-  border-right: 2px solid rgba(255,255,255,.45);
+  border: 2px solid rgba(255,255,255,.45);
   color: var(--red-dark);
   cursor: pointer;
   transition: filter .15s, transform .15s;
   position: relative;
   min-height: 86px;
   overflow: visible;
+}
+
+.gate-node,
+.gate-node2 {
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 15px;
+  min-height: unset;
 }
 
 .gate-node:hover {
@@ -670,6 +677,17 @@ button {
   flex-shrink: 0;
 }
 
+.gate-node-badge,
+.gate-node-badge2 {
+  position: absolute;
+  top: 0;                   /* bord supérieur du wrapper */
+  left: 50%;
+  transform: translate(-50%, -85%);  /* 75% du badge dépasse au-dessus, 25% reste dans le wrapper */
+  z-index: 4;
+  flex-shrink: 0;
+  /* conserver toutes vos autres règles (taille, couleur, border...) */
+}
+
 .gate-node-symbol {
   display: flex;
   align-items: center;
@@ -685,22 +703,53 @@ button {
 }
 
 .gate-node-title {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  font-size: 11px;
-  font-weight: 800;
+  writing-mode: horizontal-tb;   /* remplace vertical-rl */
+  transform: none;
+  font-size: clamp(10px, 1.4vw, 13px);
+  font-weight: 900;
   text-transform: uppercase;
-  color: var(--orange-dark);
-  line-height: 1.1;
-  flex: 1;
   text-align: center;
-  padding: 4px 0;
+  color: var(--orange-dark);
+  line-height: 1.2;
+  margin-top: 25px;
+  padding: 0 2px;
+  white-space: normal;
+  width: 100px;
+}
+
+.gate-node-title2 {
+  writing-mode: horizontal-tb;   /* remplace vertical-rl */
+  transform: none;
+  font-size: clamp(10px, 1.4vw, 13px);
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--orange-dark);
+  line-height: 1.2;
+  margin-top: 5px;
+  padding: 0 2px;
+  white-space: normal;
+  width: 100px;
+  margin-left: 50px;
+}
+
+.gate-node-title3 {
+  transform: translateX(-50%) rotate(-90deg);  font-size: clamp(10px, 1.4vw, 13px);
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--orange-dark);
+  line-height: 1.2;
+  margin-top: 24px;
+  padding: 0 2px;
+  white-space: normal;
+  width: 100px;
+  margin-left: 95px;
 }
 
 .real-track {
   position: absolute;
-  bottom: 60px;
+  bottom: -35px;
   left: 28px;
   right: 28px;
   display: grid;
@@ -714,11 +763,18 @@ button {
 
 /* ─── Phase nodes ─── */
 
+.phase-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+}
+
 .phase-node {
-  min-height: 86px;
+  min-height: 60px;       /* était 86px */
   border: 0;
   border-right: 2px solid rgba(255, 255, 255, .52);
-  padding: 14px 20px 14px;
+  padding: 10px 14px;     /* était 14px 20px 14px */
   color: #fff;
   text-align: left;
   box-shadow: 0 4px 18px rgba(6, 6, 8, 0.18);
@@ -762,14 +818,13 @@ button {
 }
 
 .phase-note {
-  display: block;
-  margin-top: 12px;
-  max-width: 260px;
+  margin: 4px 4px 0;
   font-style: italic;
-  font-weight: 700;
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 11px;
   line-height: 1.25;
-  color: rgba(255, 255, 255, .9);
+  color: #555;            /* texte sombre sur fond clair */
+  text-align: left;
 }
 
 /* ─── Handover loop arrow ─── */
@@ -807,8 +862,8 @@ button {
   position: absolute;
   left: 0;
   right: 200px;
-  bottom: 80px;
-  height: 100px;
+  bottom: 210px;
+  height: 60px;
   background: var(--sand);
   border-radius: 0 54px 54px 0;
   z-index: 1;
@@ -1244,6 +1299,41 @@ tfoot td {
   font-weight: 900;
   cursor: pointer;
   transition: filter .14s;
+}
+
+.gate-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 0;
+  padding-top: 12.5px;        /* 25% de la hauteur du badge (50px * 0.25) : le badge dépasse à 75% au-dessus du wrapper */
+}
+
+/* Bande visible entre le haut du wrapper et le gate-node : habille les 25%
+   du badge qui restent "à l'intérieur" avec le même fond/bordure que le node.
+   Elle dépasse aussi un peu au-dessus du wrapper et un peu en dessous du
+   début du gate-node, pour créer l'effet "pilule" autour du badge. */
+.gate-wrapper--bid::before,
+.gate-wrapper--real::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 0;
+  right: 0;
+  height: 31.5px;            /* 6px au-dessus + 12.5px d'origine + 6px en dessous */
+  border-left: 2px solid rgba(255,255,255,.45);
+  border-right: 2px solid rgba(255,255,255,.45);
+  border-radius: 10px 10px 0 0;
+  z-index: 2;
+}
+
+.gate-wrapper--bid::before {
+  background: var(--orange-sand);
+}
+
+.gate-wrapper--real::before {
+  background: var(--red-sand);
 }
 
 .gov-badge-btn:hover { filter: brightness(1.2); }
