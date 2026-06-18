@@ -22,31 +22,40 @@ function gatesAfter(phaseId) {
 
 // ─── Render: gate button ──────────────────────────────────────────────────────
 function makeGateButton(gate) {
+  const wrapper = document.createElement("div");
+  const isRealGate = gate.stream === "real";
+  wrapper.className = `gate-wrapper ${isRealGate ? "gate-wrapper--real" : "gate-wrapper--bid"}`;
+
+  // Badge au-dessus du bouton
+  const badge = document.createElement("span");
+  badge.className = gate.badge === "Internal" ? "gate-node-badge" : "gate-node-badge2";
+  badge.textContent = gate.badge;
+
+  // Bouton contenant uniquement le symbole
   const btn = document.createElement("button");
   btn.type      = "button";
-  if (gate.stream == "real"){
-    btn.className = "gate-node2";
-  }
-  else{
-    btn.className = "gate-node";
-  }
+  btn.className = isRealGate ? "gate-node2" : "gate-node";
   btn.title     = gate.title;
-  if (gate.badge == "Internal")
-    {
-      btn.innerHTML = `
-    <span class="gate-node-badge">${gate.badge}</span>
-    <span class="gate-node-symbol">${gate.symbol}</span>
-    <span class="gate-node-title">${gate.title}</span>
-  `;}
-  else {
-    btn.innerHTML = `
-    <span class="gate-node-badge2">${gate.badge}</span>
-    <span class="gate-node-symbol">${gate.symbol}</span>
-    <span class="gate-node-title">${gate.title}</span>
-  `;}
-  
+  btn.innerHTML = `<span class="gate-node-symbol">${gate.symbol}</span>`;
   btn.addEventListener("click", () => window.open(gate.link, "_blank"));
-  return btn;
+
+  // Titre en dessous du bouton
+  const title = document.createElement("p");
+  if (gate.title == "Kick Off Meetings" || gate.title == "Project Reviews" || gate.title == "Closure Meetings") {
+    title.className   = "gate-node-title2";
+  }
+  else if (gate.title == "Steering Comitees"){
+    title.className   = "gate-node-title3";
+  }
+  else {
+    title.className   = "gate-node-title";
+  }
+  title.innerHTML   = gate.title;
+  wrapper.appendChild(badge);
+  wrapper.appendChild(btn);
+  wrapper.appendChild(title);
+
+  return wrapper;
 }
 
 // ─── Render: phase tracks ─────────────────────────────────────────────────────
@@ -58,18 +67,27 @@ function renderPhaseTracks() {
   // BID phases (stream === "bid"), interleaved with gates
   const bidPhases = phases.filter(p => p.stream === "bid");
   bidPhases.forEach(phase => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "phase-wrapper";
+
     const node = document.createElement("button");
     node.type      = "button";
     node.className = `phase-node ${phase.color}${phase.id === "handover" ? " phase-node--handover" : ""}`;
     node.innerHTML = `
       <span class="phase-title">${phase.title}</span>
       <span class="phase-kicker">${phase.kicker || "&nbsp;"}</span>
-      <span class="phase-note">${phase.note}</span>
     `;
     node.addEventListener("click", () => {
       window.open(`matrix.html?phase=${phase.id}`, "_blank");
     });
-    bidTrack.appendChild(node);
+
+    const note = document.createElement("p");
+    note.className = "phase-note";
+    note.textContent = phase.note;
+
+    wrapper.appendChild(node);
+    wrapper.appendChild(note);
+    bidTrack.appendChild(wrapper);  // (ou realTrack)
 
     // Insert gates that come after this phase
     gatesAfter(phase.id).filter(g => !g.stream || g.stream === "transition").forEach(gate => {
@@ -80,18 +98,27 @@ function renderPhaseTracks() {
   // REAL phases (stream === "real"), interleaved with gates
   const realPhases = phases.filter(p => p.stream === "real");
   realPhases.forEach(phase => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "phase-wrapper";
+
     const node = document.createElement("button");
     node.type      = "button";
     node.className = `phase-node ${phase.color}${phase.id === "handover" ? " phase-node--handover" : ""}`;
     node.innerHTML = `
       <span class="phase-title">${phase.title}</span>
       <span class="phase-kicker">${phase.kicker || "&nbsp;"}</span>
-      <span class="phase-note">${phase.note}</span>
     `;
     node.addEventListener("click", () => {
       window.open(`matrix.html?phase=${phase.id}`, "_blank");
     });
-    realTrack.appendChild(node);
+
+    const note = document.createElement("p");
+    note.className = "phase-note";
+    note.textContent = phase.note;
+
+    wrapper.appendChild(node);
+    wrapper.appendChild(note);
+    realTrack.appendChild(wrapper);  // (ou realTrack)
 
     // Insert gates that come after this phase (real stream)
     gatesAfter(phase.id).filter(g => g.stream === "real").forEach(gate => {
